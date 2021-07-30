@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<!-- namespace declarando o jsf com o "H" e "b" -->
+
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Login</title>
+	
+</h:head>
+
+<h:body>
+	
+
+	<h:form id="loginForm">
+		<b:container layout="fluid"	style="padding-left: 25%; padding-top: 10%">
+			<b:panel title="Login de sistema" look="primary" contentStyle="aria-expanded: disable" medium-screen="6" >
+				<b:row>
+					<b:column medium-screen="2">
+						<h:outputText value="Usuário:" for="usuario" />
+					</b:column>
+					<b:column medium-screen="8">
+						<b:inputText placeholder="Digite seu usuário" id="usuário"
+							value="#{loginBean.username}" ajax="true" autocomplete="false" update="@(.message)">
+							<f:facet name="prepend">
+								<b:icon name="user" />
+							</f:facet>
+						</b:inputText>
+					</b:column>
+					<b:column medium-screen="2" style-class="message">
+						<b:message for="username" />
+					</b:column>
+				</b:row>
+				<b:row >
+					<b:column medium-screen="2">
+						<h:outputText value="Senha" />
+					</b:column>
+					<b:column medium-screen="8">
+						<b:inputSecret placeholder="Digite sua senha" id="senha" value="#{loginBean.password}"
+							ajax="true" autocomplete="false" update="@(.message)">
+							<f:facet name="prepend">
+								<b:iconAwesome name="key" />
+							</f:facet>
+						</b:inputSecret>
+					</b:column>
+					<b:column medium-screen="4" styleClass="message">
+						<b:message for="password" />
+					</b:column>
+				</b:row>
+				<b:row>
+					<b:column span="3" offset="7">
+						<h:commandButton value="Login" action="#{loginBean.AccessLoginUser}"/>
+					</b:column>
+				</b:row>
+			</b:panel>
+		</b:container>
+	</h:form>
+
+
+</h:body>
+</html>

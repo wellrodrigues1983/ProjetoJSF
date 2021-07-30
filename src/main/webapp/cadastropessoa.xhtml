@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<!-- namespace declarando o jsf com o "H" e "b" -->
+
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Login</title>
+
+</h:head>
+
+<h:body style="padding: 60px">
+	<b:navBar brand="Cadastro de Usuarios" brand-href="#" fixed="top">
+		<b:navbarLinks>
+			<b:navLink value="Inicio" href="#"></b:navLink>
+			<b:navLink value="Cadastro" href="#"></b:navLink>
+			<b:navLink value="Consulta" href="#"></b:navLink>
+		</b:navbarLinks>
+	</b:navBar>
+
+	<b:container>
+		<b:jumbotron>
+			<h1>Cadastro de Pessoas</h1>
+			<p>Informe os dados da pessoa</p>
+
+			<h:form>
+				<h:panelGrid columns="3">
+					<b:inputText label="Nome" placeholder="Digite seu nome"></b:inputText>
+					<b:inputText label="Sobrenome" placeholder="Digite seu sobrenome"></b:inputText>
+					<b:inputText label="Cidade" placeholder="Digite sua cidade"></b:inputText>
+					<b:inputText label="Email" placeholder="Digite seu e-mail"></b:inputText>
+					<b:inputText label="Confirme seu email"
+						placeholder="Confirme seu e-mail"></b:inputText>
+					<b:inputText label="Telefone" placeholder="Digite seu telefone"></b:inputText>
+					<b:form>
+						<p>Qual seu sexo?</p>
+						<b:panelGrid size="xs" columns="2">
+							<b:radiobutton value="#{radiobuttonBean.javaVersion}"
+								itemLabel="Homem" itemValue="1" required="true" />
+							<b:radiobutton value="#{radiobuttonBean.javaVersion}"
+								itemLabel="Mulher" itemValue="2" />							
+						</b:panelGrid>						
+					</b:form>
+					<b:form horizontal="true">
+						<b:formGroup>
+							<b:dateTimePicker mode="toggle-icon" showWeek="true"
+								value="#{dateBean.cdate}" required="true"
+								label="Data de Nascimento:" label-col-sm="5" col-sm="6" />
+							<b:message for="@previous" col-sm="9" />
+						</b:formGroup>
+					</b:form>
+				</h:panelGrid>
+			</h:form>
+		</b:jumbotron>
+	</b:container>
+
+
+</h:body>
+
+
+</html>
