@@ -188,7 +188,7 @@ public class LoginBean {
 		} finally {
 			ConnectionDB.closeResultSet(rs);
 			ConnectionDB.closeStatement(st);
-			ConnectionDB.closeConnection();
+//			ConnectionDB.closeConnection();
 		}
 		return null;
 

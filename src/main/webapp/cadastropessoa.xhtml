@@ -13,7 +13,7 @@
 
 </h:head>
 
-<h:body style="padding: 60px">
+<h:body style="padding: 70px">
 	<b:navBar brand="Cadastro de Usuarios" brand-href="#" fixed="top">
 		<b:navbarLinks>
 			<b:navLink value="Inicio" href="#"></b:navLink>
@@ -23,37 +23,57 @@
 	</b:navBar>
 
 	<b:container>
-		<b:jumbotron>
-			<h1>Cadastro de Pessoas</h1>
+		<b:jumbotron style="padding: 70px">
 			<p>Informe os dados da pessoa</p>
 
 			<h:form>
-				<h:panelGrid columns="3">
-					<b:inputText label="Nome" placeholder="Digite seu nome"></b:inputText>
-					<b:inputText label="Sobrenome" placeholder="Digite seu sobrenome"></b:inputText>
-					<b:inputText label="Cidade" placeholder="Digite sua cidade"></b:inputText>
-					<b:inputText label="Email" placeholder="Digite seu e-mail"></b:inputText>
-					<b:inputText label="Confirme seu email"
-						placeholder="Confirme seu e-mail"></b:inputText>
-					<b:inputText label="Telefone" placeholder="Digite seu telefone"></b:inputText>
+				<h:panelGrid columns="5">
+					<b:inputText label="Nome Completo"
+						placeholder="Digite seu nome completo"
+						value="#{pessoaBean.pessoa.nomeCompleto}" ></b:inputText>
+						
+					<b:inputText label="Telefone" placeholder="Digite seu telefone"
+						value="#{pessoaBean.pessoa.telefone}"></b:inputText>
+						
+					<b:inputText label="Email" placeholder="Digite seu email"
+						value="#{pessoaBean.pessoa.email}"></b:inputText>
+						
+					<b:inputText label="Cep" placeholder="Digite seu cep"
+						value="#{pessoaBean.pessoa.cep}">
+						<f:ajax event="blur" execute="@this" listener="#{pessoaBean.pesquisaCep}"
+						render="endereco, complemento, bairro, localidade, uf"/>
+					</b:inputText>
+					
+					<b:inputText label="Endereco" placeholder="Digite seu endereço"
+						value="#{pessoaBean.pessoa.logradouro}" id="endereco"></b:inputText>
+						
+					<b:inputText label="Numero" placeholder="Digite número"
+						value="#{pessoaBean.pessoa.numero}"></b:inputText>
+						
+					<b:inputText label="Complemto" placeholder="Digite complemento"
+						value="#{pessoaBean.pessoa.complemento}" id="complemento"></b:inputText>
+						
+					<b:inputText label="Bairro" placeholder="Digite seu bairro"
+						value="#{pessoaBean.pessoa.bairro}" id="bairro"></b:inputText>
+						
+					<b:inputText label="Cidade" placeholder="Digite sua cidade"
+						value="#{pessoaBean.pessoa.localidade}" id="localidade"></b:inputText>
+						
+					<b:inputText label="Estado" placeholder="Digite seu estado"
+						value="#{pessoaBean.pessoa.uf}" id="uf"></b:inputText>
+
+					<b:inputText label="Sexo" placeholder="Informe seu sexo" value="#{pessoaBean.pessoa.sexo}"/>
 					<b:form>
-						<p>Qual seu sexo?</p>
-						<b:panelGrid size="xs" columns="2">
-							<b:radiobutton value="#{radiobuttonBean.javaVersion}"
-								itemLabel="Homem" itemValue="1" required="true" />
-							<b:radiobutton value="#{radiobuttonBean.javaVersion}"
-								itemLabel="Mulher" itemValue="2" />							
-						</b:panelGrid>						
-					</b:form>
-					<b:form horizontal="true">
-						<b:formGroup>
-							<b:dateTimePicker mode="toggle-icon" showWeek="true"
-								value="#{dateBean.cdate}" required="true"
-								label="Data de Nascimento:" label-col-sm="5" col-sm="6" />
-							<b:message for="@previous" col-sm="9" />
-						</b:formGroup>
-					</b:form>
+						<b:inputText label="Data de Nascimento" placeholder="DD/MM/AAAA" value="#{pessoaBean.pessoa.datanasc}"/>
+					</b:form><br/>
+					
 				</h:panelGrid>
+				<b:commandButton style="align: center" value="Salvar" icon="plus-sign" look="success"
+						action="#{pessoaBean.CadastrarPessoa}">
+						<f:resetValues render="endereco, complemento, bairro, localidade, uf"/>
+						</b:commandButton>
+				 
+				
 			</h:form>
 		</b:jumbotron>
 	</b:container>
