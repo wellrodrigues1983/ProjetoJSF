@@ -47,19 +47,21 @@ public class tese {
 //				
 //				pessoa.CadastrarPessoa();
 
-		System.out.println("Digite o cep ");
-		pessoa.setCep(sc.nextLine());
-		
-		PessoaBean pb = new PessoaBean();
+//		System.out.println("Digite o cep ");
+//		pessoa.setCep(sc.nextLine());
 //		
-//		pb.pesquisaCep(null);
-
-		System.out.println(pb.pessoa.getCep());
+//		PessoaBean pb = new PessoaBean();
+////		
+////		pb.pesquisaCep(null);
+//
+//		System.out.println(pb.pessoa.getCep());
 		
 
+		PessoaBean pb = new PessoaBean();
+		
+		pb.getListagemPessoas();
 		
 		
-		 
 		
 		
 	}

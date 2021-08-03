@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<!-- namespace declarando o jsf com o "H" e "b" -->
+
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Login</title>
+
+</h:head>
+
+<h:body style="padding: 70px">
+	<b:navBar brand="Cadastro de Usuarios" brand-href="#" fixed="top">
+		<b:navbarLinks>
+			<b:navLink value="Inicio" href="index.jsf"></b:navLink>
+			<b:navLink value="Cadastro" href="cadastropessoa.jsf"></b:navLink>
+			<b:navLink value="Consulta" href="consulta.jsf"></b:navLink>
+		</b:navbarLinks>
+	</b:navBar>
+
+	<b:container style="width: 90vw">
+				
+		<b:form>
+			
+			<b:dataTable value="#{pessoaBean.listagemPessoas}" var="pess">
+			
+				<b:dataTableColumn value="#{pess.id}" order="asc" />
+				<b:dataTableColumn value="#{pess.nomeCompleto}" />
+				<b:dataTableColumn value="#{pess.telefone}" />
+				<b:dataTableColumn value="#{pess.cep}" />
+				<b:dataTableColumn value="#{pess.logradouro}" />
+				<b:dataTableColumn value="#{pess.numero}" />
+				<b:dataTableColumn value="#{pess.complemento}" />
+				<b:dataTableColumn value="#{pess.bairro}" />
+				<b:dataTableColumn value="#{pess.localidade}" />
+				<b:dataTableColumn value="#{pess.uf}" />
+				<b:dataTableColumn value="#{pess.sexo}" />
+				<b:dataTableColumn value="#{pess.datanasc}" />							
+		</b:dataTable>
+		</b:form>
+
+	</b:container>
+
+
+</h:body>
+
+
+</html>

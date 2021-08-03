@@ -4,8 +4,9 @@ import java.util.Objects;
 
 public class Pessoa {
 	
+	private String id;
 	private String nomeCompleto;
-	private Integer telefone;
+	private String telefone;
 	private String email;
 	private String cep;
 	private String logradouro;
@@ -19,11 +20,13 @@ public class Pessoa {
 	
 	public Pessoa() {
 		
-	}
+	}	
 
-	public Pessoa(String nomeCompleto, Integer telefone, String email, String cep, String logradouro, Integer numero,
-			String bairro, String localidade, String uf, String sexo, String datanasc, String complemento) {
+	public Pessoa(String id, String nomeCompleto, String telefone, String email, String cep, String logradouro,
+			Integer numero, String bairro, String localidade, String uf, String sexo, String datanasc,
+			String complemento) {
 		super();
+		this.id = id;
 		this.nomeCompleto = nomeCompleto;
 		this.telefone = telefone;
 		this.email = email;
@@ -38,6 +41,8 @@ public class Pessoa {
 		this.complemento = complemento;
 	}
 
+
+
 	public String getNomeCompleto() {
 		return nomeCompleto;
 	}
@@ -46,11 +51,11 @@ public class Pessoa {
 		this.nomeCompleto = nomeCompleto;
 	}
 
-	public Integer getTelefone() {
+	public String getTelefone() {
 		return telefone;
 	}
 
-	public void setTelefone(Integer telefone) {
+	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
 
@@ -133,6 +138,14 @@ public class Pessoa {
 	public void setComplemento(String complemento) {
 		this.complemento = complemento;
 	}
+	
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
 
 	@Override
 	public int hashCode() {
@@ -150,7 +163,11 @@ public class Pessoa {
 		Pessoa other = (Pessoa) obj;
 		return Objects.equals(email, other.email);
 	}
+
 	
+	
+	
+
 	
 	
 

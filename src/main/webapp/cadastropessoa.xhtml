@@ -16,66 +16,90 @@
 <h:body style="padding: 70px">
 	<b:navBar brand="Cadastro de Usuarios" brand-href="#" fixed="top">
 		<b:navbarLinks>
-			<b:navLink value="Inicio" href="#"></b:navLink>
-			<b:navLink value="Cadastro" href="#"></b:navLink>
-			<b:navLink value="Consulta" href="#"></b:navLink>
+			<b:navLink value="Inicio" href="index.jsf"></b:navLink>
+			<b:navLink value="Cadastro" href="cadastropessoa.jsf"></b:navLink>
+			<b:navLink value="Consulta" href="consulta.jsf"></b:navLink>
 		</b:navbarLinks>
 	</b:navBar>
 
-	<b:container>
+	<b:container style="width: 90vw">
 		<b:jumbotron style="padding: 70px">
 			<p>Informe os dados da pessoa</p>
 
-			<h:form>
-				<h:panelGrid columns="5">
+			<h:form id="formcadastro" >
+				<h:panelGrid id="gridcadastro" columns="5">
 					<b:inputText label="Nome Completo"
 						placeholder="Digite seu nome completo"
-						value="#{pessoaBean.pessoa.nomeCompleto}" ></b:inputText>
-						
+						value="#{pessoaBean.pessoa.nomeCompleto}"></b:inputText>
+
 					<b:inputText label="Telefone" placeholder="Digite seu telefone"
 						value="#{pessoaBean.pessoa.telefone}"></b:inputText>
-						
+
 					<b:inputText label="Email" placeholder="Digite seu email"
 						value="#{pessoaBean.pessoa.email}"></b:inputText>
-						
+
 					<b:inputText label="Cep" placeholder="Digite seu cep"
 						value="#{pessoaBean.pessoa.cep}">
-						<f:ajax event="blur" execute="@this" listener="#{pessoaBean.pesquisaCep}"
-						render="endereco, complemento, bairro, localidade, uf"/>
+						<f:ajax event="blur" execute="@this"
+							listener="#{pessoaBean.pesquisaCep}"
+							render="endereco, complemento, bairro, localidade, uf" />
 					</b:inputText>
-					
+
 					<b:inputText label="Endereco" placeholder="Digite seu endereço"
 						value="#{pessoaBean.pessoa.logradouro}" id="endereco"></b:inputText>
-						
+
 					<b:inputText label="Numero" placeholder="Digite número"
 						value="#{pessoaBean.pessoa.numero}"></b:inputText>
-						
-					<b:inputText label="Complemto" placeholder="Digite complemento"
+
+					<b:inputText label="Complemento" placeholder="Digite complemento"
 						value="#{pessoaBean.pessoa.complemento}" id="complemento"></b:inputText>
-						
+
 					<b:inputText label="Bairro" placeholder="Digite seu bairro"
 						value="#{pessoaBean.pessoa.bairro}" id="bairro"></b:inputText>
-						
+
 					<b:inputText label="Cidade" placeholder="Digite sua cidade"
 						value="#{pessoaBean.pessoa.localidade}" id="localidade"></b:inputText>
-						
+
 					<b:inputText label="Estado" placeholder="Digite seu estado"
 						value="#{pessoaBean.pessoa.uf}" id="uf"></b:inputText>
 
-					<b:inputText label="Sexo" placeholder="Informe seu sexo" value="#{pessoaBean.pessoa.sexo}"/>
+					<b:inputText label="Sexo" placeholder="Informe seu sexo"
+						value="#{pessoaBean.pessoa.sexo}" />
 					<b:form>
-						<b:inputText label="Data de Nascimento" placeholder="DD/MM/AAAA" value="#{pessoaBean.pessoa.datanasc}"/>
-					</b:form><br/>
-					
+						<b:inputText label="Data de Nascimento" placeholder="DD/MM/AAAA"
+							value="#{pessoaBean.pessoa.datanasc}" />
+					</b:form>
+					<br />
+
 				</h:panelGrid>
-				<b:commandButton style="align: center" value="Salvar" icon="plus-sign" look="success"
-						action="#{pessoaBean.CadastrarPessoa}">
-						<f:resetValues render="endereco, complemento, bairro, localidade, uf"/>
-						</b:commandButton>
-				 
-				
+				<b:commandButton style="align: center" value="Salvar"
+					icon="plus-sign" look="success"
+					action="#{pessoaBean.CadastrarPessoa}"
+					update="formcadastro:gridcadastro">
+					
+					
+				</b:commandButton>
 			</h:form>
 		</b:jumbotron>
+		
+		<b:form rendered="true">			
+			<b:dataTable value="#{pessoaBean.listagemPessoas}" var="pess">
+			
+				<b:dataTableColumn value="#{pess.id}" order="asc" />
+				<b:dataTableColumn value="#{pess.nomeCompleto}" />
+				<b:dataTableColumn value="#{pess.telefone}" />
+				<b:dataTableColumn value="#{pess.cep}" />
+				<b:dataTableColumn value="#{pess.logradouro}" />
+				<b:dataTableColumn value="#{pess.numero}" />
+				<b:dataTableColumn value="#{pess.complemento}" />
+				<b:dataTableColumn value="#{pess.bairro}" />
+				<b:dataTableColumn value="#{pess.localidade}" />
+				<b:dataTableColumn value="#{pess.uf}" />
+				<b:dataTableColumn value="#{pess.sexo}" />
+				<b:dataTableColumn value="#{pess.datanasc}" />							
+		</b:dataTable>
+		</b:form>
+
 	</b:container>
 
 

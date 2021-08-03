@@ -130,33 +130,7 @@ public class LoginBean {
 		}
 	}
 
-	public void SelectAllUser() {
-
-		Connection conn = null;/* Conecta ao banco */
-		Statement st = null;/* Prepara uma consulta ao banco */
-		ResultSet rs = null;/* Resultado da consulta */
-
-		try {
-			conn = ConnectionDB.getConnection();/* Abrindo uma conexão */
-
-			st = conn.createStatement();/* Instancia de um objeto statment */
-
-			rs = st.executeQuery("select * from login_user");/* fazendo uma consulta a uma tabela no banco */
-
-			while (rs.next()) {
-				System.out.println(rs.getInt("id") + "," + rs.getString("username") + "," + rs.getString("password")
-						+ "," + rs.getString("dataCadastro"));
-			}
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			ConnectionDB.closeResultSet(rs);
-			ConnectionDB.closeStatement(st);
-			ConnectionDB.closeConnection();
-		}
-
-	}
+	
 
 	public String AccessLoginUser() {
 		
@@ -191,6 +165,34 @@ public class LoginBean {
 //			ConnectionDB.closeConnection();
 		}
 		return null;
+
+	}
+	
+	public void SelectAllUser() {
+
+		Connection conn = null;/* Conecta ao banco */
+		Statement st = null;/* Prepara uma consulta ao banco */
+		ResultSet rs = null;/* Resultado da consulta */
+
+		try {
+			conn = ConnectionDB.getConnection();/* Abrindo uma conexão */
+
+			st = conn.createStatement();/* Instancia de um objeto statment */
+
+			rs = st.executeQuery("select * from login_user");/* fazendo uma consulta a uma tabela no banco */
+
+			while (rs.next()) {
+				System.out.println(rs.getInt("id") + "," + rs.getString("username") + "," + rs.getString("password")
+						+ "," + rs.getString("dataCadastro"));
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionDB.closeResultSet(rs);
+			ConnectionDB.closeStatement(st);
+			ConnectionDB.closeConnection();
+		}
 
 	}
 
